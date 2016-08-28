@@ -72,6 +72,7 @@ gen-changelog:
 	bin/changelog test
 	bin/changelog finalize --version=$(shell . $(RELEASE_SUPPORT); getVersion)
 	bin/changelog export --template=templates/changelog.tmpl --vars='{"github_user":"$(GITHUB_USER)", "github_project":"$(GITHUB_PROJECT)"}' > CHANGELOG.md
+	bin/changelog export --template=templates/changelog.tmpl --vars='{"github_user":"$(GITHUB_USER)", "github_project":"$(GITHUB_PROJECT)"}' > docs/changelog.md
 
 run-sh: 
 	docker run -it $(IMAGE):$(VERSION) /bin/sh
@@ -198,7 +199,8 @@ tag: check-status
 	bin/changelog test
 	bin/changelog finalize --version=$(VERSION)
 	bin/changelog export --template=templates/changelog.tmpl --vars='{"github_user":"$(GITHUB_USER)", "github_project":"$(GITHUB_PROJECT)"}' > CHANGELOG.md
-	git add CHANGELOG.md
+	bin/changelog export --template=templates/changelog.tmpl --vars='{"github_user":"$(GITHUB_USER)", "github_project":"$(GITHUB_PROJECT)"}' > docs/changelog.md
+	git add CHANGELOG.md docs/changelog.md
 	git commit -m "See changes in CHANGELOG.md"
 	git push
 	git tag $(TAG) ;
