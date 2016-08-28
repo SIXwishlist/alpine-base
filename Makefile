@@ -62,8 +62,8 @@ mkdocs-gen:
 mkdocs-serve: mkdocs-gen
 	mkdocs serve
 
-mkdocs-deploy-ghpages: mkdocs-gen
-	mkdocs gh-deploy --clean
+mkdocs-deploy-gh: mkdocs-gen
+	mkdocs gh-deploy
 
 gen-changelog:
 	rm -f change.log
@@ -118,7 +118,7 @@ clean-test:
 	rm -f .coverage
 	rm -fr htmlcov/
 
-build: pre-build docker-build post-build
+build: rootfs-fixperms pre-build docker-build post-build
 
 pre-build:
 
