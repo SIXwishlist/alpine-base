@@ -32,9 +32,26 @@ Released by Abner G Jacobsen, Sun 28 Aug 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### 0.1.3
+### alpine-base-0.1.3
 __Changes__
 
+- See changes in CHANGELOG.md
+- bumped to version 0.1.3
+- Fix attributes on rootfs before build. Fix making of mkdocs docs
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Sun 28 Aug 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
+### 0.1.4
+__Changes__
+
+- bumped to version 0.1.4
+- See changes in CHANGELOG.md
 - bumped to version 0.1.3
 - Fix attributes on rootfs before build. Fix making of mkdocs docs
 - See changes in CHANGELOG.md
@@ -51,7 +68,7 @@ __Contributors__
 - Abner G Jacobsen
 
 Released by Abner G Jacobsen, Sun 28 Aug 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.1.3#diff)
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.1.4#diff)
 ______________
 
 
