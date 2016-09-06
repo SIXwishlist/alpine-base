@@ -47,9 +47,32 @@ Released by Abner G Jacobsen, Sun 28 Aug 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### 0.1.6
+### alpine-base-0.1.6
 __Changes__
 
+- See changes in CHANGELOG.md
+- bumped to version 0.1.6
+- See changes in CHANGELOG.md
+- bumped to version 0.1.5
+- See changes in CHANGELOG.md
+- bumped to version 0.1.4
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Sun 28 Aug 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
+### 0.1.7
+__Changes__
+
+- bumped to version 0.1.7
+- Changed documentation
+- Added minimal script to initialize Daspanel system using S6
+- Added jq to allow parse json in command line
+- See changes in CHANGELOG.md
 - bumped to version 0.1.6
 - See changes in CHANGELOG.md
 - bumped to version 0.1.5
@@ -71,8 +94,8 @@ __Contributors__
 
 - Abner G Jacobsen
 
-Released by Abner G Jacobsen, Sun 28 Aug 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.1.6#diff)
+Released by Abner G Jacobsen, Tue 06 Sep 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.1.7#diff)
 ______________
 
 
