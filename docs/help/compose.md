@@ -49,16 +49,16 @@ Use this command to remove stopped containers create before with the
 In order to run the container and get access to a shell on it you can do:
 
 ``` sh
-docker-compose run alpine-base /bin/sh
+docker-compose run daspanel-alpine-base /bin/sh
 ```
 
-where `alpine-base` must be one of the 
+where `daspanel-alpine-base` must be one of the 
 definied services in your `docker-compose.yml`. See below relevant content of 
 the compose file:
 ``` yaml
 version: '2'
 services:
-    alpine-base:
+    daspanel-alpine-base:
         build:
             context: .
             dockerfile: Dockerfile
@@ -70,6 +70,8 @@ services:
 
 The sample `docker-compose.yml` file in this project it's only an start point for 
 your convenience. Fell free to change it for your specific needs.
+
+The sample `docker-compose.yml` set env variables sugin the `daspanel.env` file.
 
 
 
