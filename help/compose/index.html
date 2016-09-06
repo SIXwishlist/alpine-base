@@ -376,15 +376,15 @@ is highly recommended that you know his documentation:
 <h2 id="another-usages">Another usages</h2>
 <h3 id="shell-access-to-the-container">Shell access to the container</h3>
 <p>In order to run the container and get access to a shell on it you can do:</p>
-<pre><code class="sh">docker-compose run alpine-base /bin/sh
+<pre><code class="sh">docker-compose run daspanel-alpine-base /bin/sh
 </code></pre>
 
-<p>where <code>alpine-base</code> must be one of the 
+<p>where <code>daspanel-alpine-base</code> must be one of the 
 definied services in your <code>docker-compose.yml</code>. See below relevant content of 
 the compose file:</p>
 <pre><code class="yaml">version: '2'
 services:
-    alpine-base:
+    daspanel-alpine-base:
         build:
             context: .
             dockerfile: Dockerfile
@@ -394,6 +394,7 @@ services:
 <h2 id="customization">Customization</h2>
 <p>The sample <code>docker-compose.yml</code> file in this project it's only an start point for 
 your convenience. Fell free to change it for your specific needs.</p>
+<p>The sample <code>docker-compose.yml</code> set env variables using the <code>daspanel.env</code> file.</p>
           <aside class="copyright" role="note">
             
               Copyright (c) 2016 Abner G Jacobsen &ndash;
