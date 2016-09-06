@@ -71,7 +71,7 @@ services:
 The sample `docker-compose.yml` file in this project it's only an start point for 
 your convenience. Fell free to change it for your specific needs.
 
-The sample `docker-compose.yml` set env variables sugin the `daspanel.env` file.
+The sample `docker-compose.yml` set env variables using the `daspanel.env` file.
 
 
 
