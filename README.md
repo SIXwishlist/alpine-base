@@ -7,15 +7,7 @@ Docker container using latest stable Alpine with a S6 supervisor init system.
 * Documentation: <https://daspanel.github.io/alpine-base/>
 
 ## How to use
-Get
-```shell
-docker pull daspanel/alpine-base:latest
-```
-
-Run
-```shell
-docker run daspanel/alpine-base:latest
-```
+See in the [documentation](https://daspanel.github.io/alpine-base/)
 
 ## Features
 
@@ -23,11 +15,6 @@ docker run daspanel/alpine-base:latest
 * Make file to build and publish
 * [More...](https://daspanel.github.io/alpine-base/) 
 
-## Credits
+## Additional docs and credits
 
-* This project was auto created in github.com and hub.docker.com with 
-<https://github.com/daspanel/cookiecutter-docker>
-* [Mkdocs](http://www.mkdocs.org/)
-* [CHANGELOG.md Generator](https://github.com/mh-cbon/changelog)
-* <https://github.com/smebberson/docker-alpine>
-* <https://github.com/mvanholsteijn/docker-makefile>
+* [Project home page](https://daspanel.github.io/alpine-base/)
