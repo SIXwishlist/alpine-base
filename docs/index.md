@@ -45,10 +45,6 @@ docker run -it -e DASPANEL_MASTER_EMAIL=my@email.com daspanel/alpine-base:latest
 <https://github.com/daspanel/cookiecutter-docker>
 * [Mkdocs](http://www.mkdocs.org/)
 * [CHANGELOG.md Generator](https://github.com/mh-cbon/changelog)
- <https://github.com/deweysasser/docker-project-template>
-* <https://github.com/zixia/docker-simple-mail-forwarder>
-* <https://github.com/mvanholsteijn/docker-makefile>
-* <https://github.com/sstephenson/bats>
-* <https://github.com/webhippie/templater>
-* <https://stedolan.github.io/jq/>
+* [Templater](https://github.com/webhippie/templater)
+* [Jq](https://stedolan.github.io/jq/)
 

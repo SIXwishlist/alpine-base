@@ -13,6 +13,12 @@ is highly recommended that you know his documentation:
 
 ## Quick Start
 
+### Create a Docker volume to store permanent data
+
+``` sh
+docker volume create --name=daspanel-data
+```
+
 ### Start container:
 
 ``` sh
