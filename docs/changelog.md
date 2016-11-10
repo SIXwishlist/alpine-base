@@ -172,9 +172,33 @@ Released by Abner G Jacobsen, Thu 10 Nov 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### 0.2.2
+### alpine-base-0.2.2
 __Changes__
 
+- See changes in CHANGELOG.md
+- bumped to version 0.2.2
+- Merge branch 'master' of https://github.com/daspanel/alpine-base
+  
+  source sync
+- See changes in CHANGELOG.md
+- bumped to version 0.2.1
+- Some corrections
+- Delete email.env
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Thu 10 Nov 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
+### 0.2.3
+__Changes__
+
+- bumped to version 0.2.3
+- Some corrections
+- See changes in CHANGELOG.md
 - bumped to version 0.2.2
 - Merge branch 'master' of https://github.com/daspanel/alpine-base
   
@@ -231,7 +255,7 @@ __Contributors__
 - Abner G Jacobsen
 
 Released by Abner G Jacobsen, Thu 10 Nov 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.2#diff)
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.3#diff)
 ______________
 
 
