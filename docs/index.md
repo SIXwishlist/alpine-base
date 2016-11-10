@@ -24,7 +24,7 @@ you run your docker.
 | DASPANEL_MAIL_SERVER | no* | smtp.gmail.com:587 | Smtp server address and port.
 | DASPANEL_MAIL_USER | no* | account@gmail.com | Remote SMTP server account to use for sending email.
 | DASPANEL_MAIL_PWD | no* | account@gmail.com | Remote SMTP account password.
-
+*Only required if you set DASPANEL_MAIL_HUB, otherwise is ignored. 
 
 ## How to use
 Get
