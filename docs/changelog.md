@@ -148,9 +148,11 @@ Released by Abner G Jacobsen, Tue 06 Sep 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### 0.1.10-55dc48e
+### 0.2.0
 __Changes__
 
+- bumped to version 0.2.0
+- Changelog updated
 - Minor corrections
 - Added configuration step in S6 using ENV variables and templates
 - ENV variables can be set using more than one env file
@@ -196,7 +198,7 @@ __Contributors__
 - Abner G Jacobsen
 
 Released by Abner G Jacobsen, Thu 10 Nov 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.1.10-55dc48e#diff)
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.0#diff)
 ______________
 
 
