@@ -183,7 +183,6 @@ __Changes__
 - See changes in CHANGELOG.md
 - bumped to version 0.2.1
 - Some corrections
-- Delete email.env
 
 __Contributors__
 
@@ -193,11 +192,27 @@ Released by Abner G Jacobsen, Thu 10 Nov 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### 0.2.3
+### alpine-base-0.2.3
 __Changes__
 
+- See changes in CHANGELOG.md
 - bumped to version 0.2.3
-- Some corrections
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Thu 10 Nov 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
+### 0.2.4
+__Changes__
+
+- bumped to version 0.2.4
+- Added env file for ssmtp/SMTP configuration.
+- See changes in CHANGELOG.md
+- bumped to version 0.2.3
 - See changes in CHANGELOG.md
 - bumped to version 0.2.2
 - Merge branch 'master' of https://github.com/daspanel/alpine-base
@@ -206,7 +221,6 @@ __Changes__
 - See changes in CHANGELOG.md
 - bumped to version 0.2.1
 - Some corrections
-- Delete email.env
 - See changes in CHANGELOG.md
 - bumped to version 0.2.0
 - Changelog updated
@@ -255,7 +269,7 @@ __Contributors__
 - Abner G Jacobsen
 
 Released by Abner G Jacobsen, Thu 10 Nov 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.3#diff)
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.4#diff)
 ______________
 
 
