@@ -148,9 +148,36 @@ Released by Abner G Jacobsen, Tue 06 Sep 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### 0.2.0
+### alpine-base-0.2.0
 __Changes__
 
+- See changes in CHANGELOG.md
+- bumped to version 0.2.0
+- Changelog updated
+- Minor corrections
+- Added configuration step in S6 using ENV variables and templates
+- ENV variables can be set using more than one env file
+- Changed Makefile to clean all *~files
+- Added ssmtp package
+- See changes in CHANGELOG.md
+- bumped to version 0.1.10
+- Changes in documentation.
+- Added templater
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Thu 10 Nov 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
+### 0.2.1
+__Changes__
+
+- bumped to version 0.2.1
+- Some corrections
+- See changes in CHANGELOG.md
 - bumped to version 0.2.0
 - Changelog updated
 - Minor corrections
@@ -198,7 +225,7 @@ __Contributors__
 - Abner G Jacobsen
 
 Released by Abner G Jacobsen, Thu 10 Nov 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.0#diff)
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.1#diff)
 ______________
 
 
