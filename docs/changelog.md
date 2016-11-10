@@ -15,9 +15,35 @@ Released by Abner G Jacobsen, Sun 28 Aug 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### alpine-base-0.1.2
+### alpine-base-0.1.10
 __Changes__
 
+- See changes in CHANGELOG.md
+- bumped to version 0.1.10
+- Changes in documentation.
+- Added templater
+- See changes in CHANGELOG.md
+- bumped to version 0.1.9
+- More changes in docker-compose usage
+- Changes in docker-compose usage
+- Added docker-compose.yml sample file and daspanel.env example
+- See changes in CHANGELOG.md
+- bumped to version 0.1.8
+- Added S6_BEHAVIOUR_IF_STAGE2_FAILS=2 in Dockerfile to not allow container init if minimal env variables are not set.
+- See changes in CHANGELOG.md
+- bumped to version 0.1.7
+- Changed documentation
+- Added minimal script to initialize Daspanel system using S6
+- Added jq to allow parse json in command line
+- See changes in CHANGELOG.md
+- bumped to version 0.1.6
+- See changes in CHANGELOG.md
+- bumped to version 0.1.5
+- See changes in CHANGELOG.md
+- bumped to version 0.1.4
+- See changes in CHANGELOG.md
+- bumped to version 0.1.3
+- Fix attributes on rootfs before build. Fix making of mkdocs docs
 - See changes in CHANGELOG.md
 - bumped to version 0.1.2
 - small changes in docs.
@@ -28,7 +54,15 @@ __Contributors__
 
 - Abner G Jacobsen
 
-Released by Abner G Jacobsen, Sun 28 Aug 2016 -
+Released by Abner G Jacobsen, Thu 08 Sep 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
+### alpine-base-0.1.2
+__Changes__
+
+
+Released by N/A, Thu 10 Nov 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
@@ -114,9 +148,15 @@ Released by Abner G Jacobsen, Tue 06 Sep 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### 0.1.10
+### 0.1.10-55dc48e
 __Changes__
 
+- Minor corrections
+- Added configuration step in S6 using ENV variables and templates
+- ENV variables can be set using more than one env file
+- Changed Makefile to clean all *~files
+- Added ssmtp package
+- See changes in CHANGELOG.md
 - bumped to version 0.1.10
 - Changes in documentation.
 - Added templater
@@ -155,8 +195,8 @@ __Contributors__
 
 - Abner G Jacobsen
 
-Released by Abner G Jacobsen, Thu 08 Sep 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.1.10#diff)
+Released by Abner G Jacobsen, Thu 10 Nov 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.1.10-55dc48e#diff)
 ______________
 
 
