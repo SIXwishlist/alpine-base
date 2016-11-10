@@ -43,12 +43,12 @@ chown :ssmtp /etc/ssmtp/ssmtp.conf
 chown :ssmtp /usr/sbin/ssmtp
 chmod g+s /usr/sbin/ssmtp
 
-# Send email with instance info
-{ 
-    echo "To: $DASPANEL_MASTER_EMAIL"; 
-    echo "From: $DASPANEL_MAIL_USER"; 
-    echo "Subject: DASPANEL instance $DASPANEL_GUUID is running"; 
-    echo ""; 
-    echo "Teste enviado inside daspanel docker alpine base"; 
-} | ssmtp -vvv $DASPANEL_MASTER_EMAIL
+## Send email with instance info
+#{ 
+#    echo "To: $DASPANEL_MASTER_EMAIL"; 
+#    echo "From: $DASPANEL_MAIL_USER"; 
+#    echo "Subject: DASPANEL instance $DASPANEL_GUUID is running"; 
+#    echo ""; 
+#    echo "Teste enviado inside daspanel docker alpine base"; 
+#} | ssmtp -vvv $DASPANEL_MASTER_EMAIL
 
