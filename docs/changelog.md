@@ -129,9 +129,11 @@ Released by Abner G Jacobsen, Tue 06 Sep 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### 0.2.5-dd58d6a
+### 0.2.6
 __Changes__
 
+- bumped to version 0.2.6
+- Bumped version
 - Added ca-certificates package
 - See changes in CHANGELOG.md
 - bumped to version 0.2.5
@@ -197,7 +199,7 @@ __Contributors__
 - Abner G Jacobsen
 
 Released by Abner G Jacobsen, Sun 27 Nov 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.5-dd58d6a#diff)
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.6#diff)
 ______________
 
 ### alpine-base-0.2.0
