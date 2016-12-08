@@ -1,17 +1,17 @@
 # Changelog - admindaspanel / alpine-base
 
-### alpine-base-0.2.5
+### alpine-base-0.2.4
 __Changes__
 
 - See changes in CHANGELOG.md
-- bumped to version 0.2.5
-- Changed naming convention for /etc/cont-init.d to make sure initialization scripts are executed in correct order for all Daspanel containers ecosystem.
+- bumped to version 0.2.4
+- Added env file for ssmtp/SMTP configuration.
 
 __Contributors__
 
 - Abner G Jacobsen
 
-Released by Abner G Jacobsen, Fri 11 Nov 2016 -
+Released by Abner G Jacobsen, Thu 10 Nov 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
@@ -81,21 +81,51 @@ Released by Abner G Jacobsen, Sun 28 Aug 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### alpine-base-0.1.6
+### alpine-base-0.2.6
 __Changes__
 
 - See changes in CHANGELOG.md
-- bumped to version 0.1.6
-- See changes in CHANGELOG.md
-- bumped to version 0.1.5
-- See changes in CHANGELOG.md
-- bumped to version 0.1.4
+- bumped to version 0.2.6
+- Bumped version
+- Added ca-certificates package
 
 __Contributors__
 
 - Abner G Jacobsen
 
-Released by Abner G Jacobsen, Sun 28 Aug 2016 -
+Released by Abner G Jacobsen, Sun 27 Nov 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
+### alpine-base-0.1.7
+__Changes__
+
+- See changes in CHANGELOG.md
+- bumped to version 0.1.7
+- Changed documentation
+- Added minimal script to initialize Daspanel system using S6
+- Added jq to allow parse json in command line
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Tue 06 Sep 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
+### alpine-base-0.2.5
+__Changes__
+
+- See changes in CHANGELOG.md
+- bumped to version 0.2.5
+- Changed naming convention for /etc/cont-init.d to make sure initialization scripts are executed in correct order for all Daspanel containers ecosystem.
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Fri 11 Nov 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
@@ -115,6 +145,47 @@ Released by Abner G Jacobsen, Wed 30 Nov 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
+### alpine-base-0.2.0
+__Changes__
+
+- See changes in CHANGELOG.md
+- bumped to version 0.2.0
+- Changelog updated
+- Minor corrections
+- Added configuration step in S6 using ENV variables and templates
+- ENV variables can be set using more than one env file
+- Changed Makefile to clean all *~files
+- Added ssmtp package
+- See changes in CHANGELOG.md
+- bumped to version 0.1.10
+- Changes in documentation.
+- Added templater
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Thu 10 Nov 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
+### alpine-base-0.1.9
+__Changes__
+
+- See changes in CHANGELOG.md
+- bumped to version 0.1.9
+- More changes in docker-compose usage
+- Changes in docker-compose usage
+- Added docker-compose.yml sample file and daspanel.env example
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Tue 06 Sep 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
 ### alpine-base-0.1.8
 __Changes__
 
@@ -130,25 +201,96 @@ Released by Abner G Jacobsen, Tue 06 Sep 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### alpine-base-0.2.6
+### alpine-base-0.2.8
 __Changes__
 
 - See changes in CHANGELOG.md
-- bumped to version 0.2.6
-- Bumped version
-- Added ca-certificates package
+- bumped to version 0.2.8
+- Added su-exec to base image. It is to be used like gosu to run programs with specific user:group privileges.
+- Added to .gitignore additional files and dirs
 
 __Contributors__
 
 - Abner G Jacobsen
 
-Released by Abner G Jacobsen, Sun 27 Nov 2016 -
+Released by Abner G Jacobsen, Thu 08 Dec 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### 0.2.8
+### alpine-base-0.2.3
 __Changes__
 
+- See changes in CHANGELOG.md
+- bumped to version 0.2.3
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Thu 10 Nov 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
+### alpine-base-0.1.1
+__Changes__
+
+- See changes in CHANGELOG.md
+- bumped to version 0.1.1
+- first commit
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Sun 28 Aug 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
+### alpine-base-0.2.2
+__Changes__
+
+- See changes in CHANGELOG.md
+- bumped to version 0.2.2
+- Merge branch 'master' of https://github.com/daspanel/alpine-base
+  
+  source sync
+- See changes in CHANGELOG.md
+- bumped to version 0.2.1
+- Some corrections
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Thu 10 Nov 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
+### alpine-base-0.1.6
+__Changes__
+
+- See changes in CHANGELOG.md
+- bumped to version 0.1.6
+- See changes in CHANGELOG.md
+- bumped to version 0.1.5
+- See changes in CHANGELOG.md
+- bumped to version 0.1.4
+
+__Contributors__
+
+- Abner G Jacobsen
+
+Released by Abner G Jacobsen, Sun 28 Aug 2016 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+______________
+
+### 0.2.9
+__Changes__
+
+- bumped to version 0.2.9
+- Optimized docker container layers putting all ENV setting in one command inside Dockerfile.
+- Daspanel user need home directory because some programs like Minio per default save on it some runtime/config info.
+- See changes in CHANGELOG.md
 - bumped to version 0.2.8
 - Added su-exec to base image. It is to be used like gosu to run programs with specific user:group privileges.
 - Added to .gitignore additional files and dirs
@@ -224,129 +366,7 @@ __Contributors__
 - Abner G Jacobsen
 
 Released by Abner G Jacobsen, Thu 08 Dec 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.8#diff)
-______________
-
-### alpine-base-0.2.0
-__Changes__
-
-- See changes in CHANGELOG.md
-- bumped to version 0.2.0
-- Changelog updated
-- Minor corrections
-- Added configuration step in S6 using ENV variables and templates
-- ENV variables can be set using more than one env file
-- Changed Makefile to clean all *~files
-- Added ssmtp package
-- See changes in CHANGELOG.md
-- bumped to version 0.1.10
-- Changes in documentation.
-- Added templater
-
-__Contributors__
-
-- Abner G Jacobsen
-
-Released by Abner G Jacobsen, Thu 10 Nov 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
-______________
-
-### alpine-base-0.1.9
-__Changes__
-
-- See changes in CHANGELOG.md
-- bumped to version 0.1.9
-- More changes in docker-compose usage
-- Changes in docker-compose usage
-- Added docker-compose.yml sample file and daspanel.env example
-
-__Contributors__
-
-- Abner G Jacobsen
-
-Released by Abner G Jacobsen, Tue 06 Sep 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
-______________
-
-### alpine-base-0.2.4
-__Changes__
-
-- See changes in CHANGELOG.md
-- bumped to version 0.2.4
-- Added env file for ssmtp/SMTP configuration.
-
-__Contributors__
-
-- Abner G Jacobsen
-
-Released by Abner G Jacobsen, Thu 10 Nov 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
-______________
-
-### alpine-base-0.1.1
-__Changes__
-
-- See changes in CHANGELOG.md
-- bumped to version 0.1.1
-- first commit
-
-__Contributors__
-
-- Abner G Jacobsen
-
-Released by Abner G Jacobsen, Sun 28 Aug 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
-______________
-
-### alpine-base-0.2.3
-__Changes__
-
-- See changes in CHANGELOG.md
-- bumped to version 0.2.3
-
-__Contributors__
-
-- Abner G Jacobsen
-
-Released by Abner G Jacobsen, Thu 10 Nov 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
-______________
-
-### alpine-base-0.1.7
-__Changes__
-
-- See changes in CHANGELOG.md
-- bumped to version 0.1.7
-- Changed documentation
-- Added minimal script to initialize Daspanel system using S6
-- Added jq to allow parse json in command line
-
-__Contributors__
-
-- Abner G Jacobsen
-
-Released by Abner G Jacobsen, Tue 06 Sep 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
-______________
-
-### alpine-base-0.2.2
-__Changes__
-
-- See changes in CHANGELOG.md
-- bumped to version 0.2.2
-- Merge branch 'master' of https://github.com/daspanel/alpine-base
-  
-  source sync
-- See changes in CHANGELOG.md
-- bumped to version 0.2.1
-- Some corrections
-
-__Contributors__
-
-- Abner G Jacobsen
-
-Released by Abner G Jacobsen, Thu 10 Nov 2016 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.9#diff)
 ______________
 
 
