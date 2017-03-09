@@ -46,8 +46,8 @@ RUN set -x \
     && rm -f /tmp/s6-overlay.tar.gz \
 
     # Install gomplate
-    && wget https://github.com/hairyhenderson/gomplate/releases/download/v1.5.0/gomplate_linux-amd64-slim -O /usr/local/bin/gomplate \
-    && chmod 755 /usr/local/bin/gomplate \
+    && wget https://github.com/hairyhenderson/gomplate/releases/download/v1.5.0/gomplate_linux-amd64-slim -O /usr/bin/gomplate \
+    && chmod 755 /usr/bin/gomplate \
     && gomplate --help \
 
     # Clean image space
