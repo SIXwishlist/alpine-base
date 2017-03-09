@@ -24,6 +24,7 @@ LABEL org.label-schema.schema-version="1.0" \
       org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vendor="DASPANEL" \
       org.label-schema.version=$VERSION \
+      org.label-schema.url="http://daspanel.com" \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.name="alpine-base" \
