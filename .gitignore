@@ -4,6 +4,9 @@ src/
 # App data dir
 data/
 
+# Build temp files
+buildlog.txt
+
 # Dev only files, maybe contain secrets
 docker-compose.dev.yml
 daspanel.dev.env
