@@ -1,41 +1,42 @@
 #!/usr/bin/with-contenv sh
 
-if [ -z "$DASPANEL_MAIL_HUB" ]; then
-    echo "***"
-    echo "ERROR: You must set the env variable DASPANEL_MAIL_HUB"
-    echo "***"
-    exit 1
-fi
-
-if [ -z "$DASPANEL_MAIL_SERVER" ]; then
-    echo "***"
-    echo "ERROR: You must set the env variable DASPANEL_MAIL_SERVER"
-    echo "***"
-    exit 1
-fi
-
-if [ -z "$DASPANEL_MAIL_USER" ]; then
-    echo "***"
-    echo "ERROR: You must set the env variable DASPANEL_MAIL_USER"
-    echo "***"
-    exit 1
-fi
-
-if [ -z "$DASPANEL_MAIL_PWD" ]; then
-    echo "***"
-    echo "ERROR: You must set the env variable DASPANEL_MAIL_PWD"
-    echo "***"
-    exit 1
-fi
+[[ -z "${DASPANEL_SMTP_TYPE}" ]] && export DASPANEL_SMTP_TYPE="mailhog"
+[[ -z "${DASPANEL_SMTP_SERVER}" ]] && export DASPANEL_SMTP_SERVER="daspanel-mailcatch:1025"
+[[ -z "${DASPANEL_SMTP_USER}" ]] && export DASPANEL_SMTP_USER="$DASPANEL_MASTER_EMAIL"
+[[ -z "${DASPANEL_SMTP_PWD}" ]] && export DASPANEL_SMTP_PWD="$DASPANEL_GUUID"
 
 # Configure ssmtp
-/usr/bin/templater -d -p daspanel \
-  -o /etc/ssmtp/ssmtp.conf \
-  /opt/daspanel/conf-templates/etc/ssmtp/gmail-ssmtp.conf.tmpl
+export CFG_JSON=$(jq -n -c -M \
+    '{
+        "admin": env.DASPANEL_MASTER_EMAIL, 
+        "password": env.DASPANEL_MASTER_PASSWORD,
+        "hostname": env.DASPANEL_HOST,
+        "smtp": {
+            "type": env.DASPANEL_SMTP_TYPE,
+            "server": env.DASPANEL_SMTP_SERVER,
+            "user": env.DASPANEL_SMTP_USER,
+            "password": env.DASPANEL_SMTP_PWD
+        }
+    }' \
+)
 
-/usr/bin/templater -d -p daspanel \
-  -o /etc/ssmtp/revaliases \
-  /opt/daspanel/conf-templates/etc/ssmtp/gmail-revaliases.tmpl
+echo "SSMTP.CONF"
+echo $CFG_JSON | /usr/bin/gomplate \
+    < /opt/daspanel/conf-templates/etc/ssmtp/gmail-ssmtp.conf.tmpl \
+    >  /etc/ssmtp/ssmtp.conf
+
+#/usr/bin/templater -d -p daspanel \
+#  -o /etc/ssmtp/ssmtp.conf \
+#  /opt/daspanel/conf-templates/etc/ssmtp/gmail-ssmtp.conf.tmpl
+
+echo "REVALIASES"
+echo $CFG_JSON | /usr/bin/gomplate \
+    < /opt/daspanel/conf-templates/etc/ssmtp/gmail-revaliases.tmpl \
+    >  /etc/ssmtp/revaliases
+
+#/usr/bin/templater -d -p daspanel \
+#  -o /etc/ssmtp/revaliases \
+#  /opt/daspanel/conf-templates/etc/ssmtp/gmail-revaliases.tmpl
 
 # secure ssmtp - https://wiki.archlinux.org/index.php/SSMTP
 addgroup ssmtp
@@ -43,12 +44,4 @@ chown :ssmtp /etc/ssmtp/ssmtp.conf
 chown :ssmtp /usr/sbin/ssmtp
 chmod g+s /usr/sbin/ssmtp
 
-## Send email with instance info
-#{ 
-#    echo "To: $DASPANEL_MASTER_EMAIL"; 
-#    echo "From: $DASPANEL_MAIL_USER"; 
-#    echo "Subject: DASPANEL instance $DASPANEL_GUUID is running"; 
-#    echo ""; 
-#    echo "Teste enviado inside daspanel docker alpine base"; 
-#} | ssmtp -vvv $DASPANEL_MASTER_EMAIL
 
