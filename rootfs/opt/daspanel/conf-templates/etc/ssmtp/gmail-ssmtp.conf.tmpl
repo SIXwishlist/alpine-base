@@ -2,15 +2,15 @@
 #
 # The person who gets all mail for userids < 1000
 # Make this empty to disable rewriting.
-root={{ (getenv "CFG_JSON" | json).admin }}
+root={{ (datasource "cfg").sys.admin }}
 
 # The place where the mail goes. The actual machine name is required
 # no MX records are consulted. Commonly mailhosts are named mail.domain.com
 # The example will fit if you are in domain.com and you mailhub is so named.
 #mailhub=
-mailhub={{ (getenv "CFG_JSON" | json).smtp.server }}
-AuthUser={{ (getenv "CFG_JSON" | json).smtp.user }}
-AuthPass={{ (getenv "CFG_JSON" | json).smtp.password }}
+mailhub={{ (datasource "cfg").smtp.server }}
+AuthUser={{ (datasource "cfg").smtp.user }}
+AuthPass={{ (datasource "cfg").smtp.password }}
 UseTLS=YES
 UseSTARTTLS=YES
 
@@ -21,9 +21,7 @@ UseSTARTTLS=YES
 #rewriteDomain=gmail.com
 
 # The full hostname
-#hostname="localhost"
-#hostname=abner.jacobsen@gmail.com
-hostname={{ (getenv "CFG_JSON" | json).hostname }}
+hostname={{ (datasource "cfg").sys.hostname }}
 
 # Are users allowed to set their own From: address?
 # YES - Allow the user to specify their own From: address
