@@ -1,47 +1,25 @@
 #!/usr/bin/with-contenv sh
 
-[[ -z "${DASPANEL_SMTP_TYPE}" ]] && export DASPANEL_SMTP_TYPE="mailhog"
-[[ -z "${DASPANEL_SMTP_SERVER}" ]] && export DASPANEL_SMTP_SERVER="daspanel-mailcatch:1025"
-[[ -z "${DASPANEL_SMTP_USER}" ]] && export DASPANEL_SMTP_USER="$DASPANEL_MASTER_EMAIL"
-[[ -z "${DASPANEL_SMTP_PWD}" ]] && export DASPANEL_SMTP_PWD="$DASPANEL_GUUID"
+# Installation UUID must be informed
+if [ -z "$DASPANEL_SYS_UUID" ]; then
+    echo "***"
+    echo "ERROR: You must set the env variable DASPANEL_SYS_UUID to a valid UUID"
+    echo "***"
+    exit 1
+fi
 
-# Configure ssmtp
-export CFG_JSON=$(jq -n -c -M \
-    '{
-        "admin": env.DASPANEL_MASTER_EMAIL, 
-        "password": env.DASPANEL_MASTER_PASSWORD,
-        "hostname": env.DASPANEL_HOST,
-        "smtp": {
-            "type": env.DASPANEL_SMTP_TYPE,
-            "server": env.DASPANEL_SMTP_SERVER,
-            "user": env.DASPANEL_SMTP_USER,
-            "password": env.DASPANEL_SMTP_PWD
-        }
-    }' \
-)
-
-echo "SSMTP.CONF"
-echo $CFG_JSON | /usr/bin/gomplate \
-    < /opt/daspanel/conf-templates/etc/ssmtp/gmail-ssmtp.conf.tmpl \
+# Configure
+/usr/bin/gomplate -d cfg=file:///opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json \
+    < /opt/daspanel/conf-templates/etc/ssmtp/mailhog-ssmtp.conf.tmpl \
     >  /etc/ssmtp/ssmtp.conf
 
-#/usr/bin/templater -d -p daspanel \
-#  -o /etc/ssmtp/ssmtp.conf \
-#  /opt/daspanel/conf-templates/etc/ssmtp/gmail-ssmtp.conf.tmpl
-
-echo "REVALIASES"
-echo $CFG_JSON | /usr/bin/gomplate \
+/usr/bin/gomplate -d cfg=file:///opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json \
     < /opt/daspanel/conf-templates/etc/ssmtp/gmail-revaliases.tmpl \
     >  /etc/ssmtp/revaliases
-
-#/usr/bin/templater -d -p daspanel \
-#  -o /etc/ssmtp/revaliases \
-#  /opt/daspanel/conf-templates/etc/ssmtp/gmail-revaliases.tmpl
 
 # secure ssmtp - https://wiki.archlinux.org/index.php/SSMTP
 addgroup ssmtp
 chown :ssmtp /etc/ssmtp/ssmtp.conf
 chown :ssmtp /usr/sbin/ssmtp
 chmod g+s /usr/sbin/ssmtp
-
 
