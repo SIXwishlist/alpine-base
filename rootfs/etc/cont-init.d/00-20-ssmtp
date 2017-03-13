@@ -14,7 +14,7 @@ fi
     >  /etc/ssmtp/ssmtp.conf
 
 /usr/bin/gomplate -d cfg=file:///opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json \
-    < /opt/daspanel/conf-templates/etc/ssmtp/gmail-revaliases.tmpl \
+    < /opt/daspanel/conf-templates/etc/ssmtp/revaliases.tmpl \
     >  /etc/ssmtp/revaliases
 
 # secure ssmtp - https://wiki.archlinux.org/index.php/SSMTP
