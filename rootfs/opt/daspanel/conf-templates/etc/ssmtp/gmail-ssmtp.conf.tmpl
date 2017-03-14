@@ -1,17 +1,16 @@
-#
 # /etc/ssmtp.conf -- a config file for sSMTP sendmail.
 #
 # The person who gets all mail for userids < 1000
 # Make this empty to disable rewriting.
-root={{ envString "MASTER_EMAIL" }}
+root={{ (datasource "cfg").sys.admin }}
 
 # The place where the mail goes. The actual machine name is required
 # no MX records are consulted. Commonly mailhosts are named mail.domain.com
 # The example will fit if you are in domain.com and you mailhub is so named.
 #mailhub=
-mailhub={{ envString "MAIL_SERVER" }}
-AuthUser={{ envString "MAIL_USER" }}
-AuthPass={{ envString "MAIL_PWD" }}
+mailhub={{ (datasource "cfg").smtp.server }}
+AuthUser={{ (datasource "cfg").smtp.user }}
+AuthPass={{ (datasource "cfg").smtp.password }}
 UseTLS=YES
 UseSTARTTLS=YES
 
@@ -22,9 +21,7 @@ UseSTARTTLS=YES
 #rewriteDomain=gmail.com
 
 # The full hostname
-#hostname="localhost"
-#hostname=abner.jacobsen@gmail.com
-hostname={{ envString "GUUID" }}
+hostname={{ (datasource "cfg").sys.hostname }}
 
 # Are users allowed to set their own From: address?
 # YES - Allow the user to specify their own From: address

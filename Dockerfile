@@ -49,7 +49,6 @@ RUN set -x \
     # Install gomplate
     && wget https://github.com/hairyhenderson/gomplate/releases/download/v1.5.0/gomplate_linux-amd64-slim -O /usr/bin/gomplate \
     && chmod 755 /usr/bin/gomplate \
-    && gomplate --help \
 
     # Clean image space
     && rm -rf /var/cache/apk/* \
