@@ -16,7 +16,7 @@ ENV \
     TZ="UTC" \
 
     # S6 overlay version
-    S6_OVERLAY_VERSION=v1.18.1.5
+    S6_OVERLAY_VERSION=v1.19.1.1
 
 # A little bit of metadata management.
 # See http://label-schema.org/  
