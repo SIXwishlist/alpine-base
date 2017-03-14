@@ -6,21 +6,12 @@ services:
             dockerfile: Dockerfile
         image: daspanel/alpine-base
         volumes:
-            - daspanel-data:/opt/daspanel/data
+            - ./data:/opt/daspanel/data
         networks:
             - frontend
             - backend
-        ports:
-            - "9000:9000"
         env_file:
             - daspanel.env
-            - smtp.env
-
-volumes:
-    daspanel-data:
-        external:
-            name: daspanel-data
-
 networks:  
   frontend:
     driver: bridge
