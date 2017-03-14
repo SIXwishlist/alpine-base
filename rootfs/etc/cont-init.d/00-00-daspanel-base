@@ -1,43 +1,123 @@
 #!/usr/bin/with-contenv sh
 
-USER_ID=${LOCAL_USER_ID:-1000}
-echo "Starting with UID : $USER_ID"
+USER_ID=${DASPANEL_SYS_USERID:-1000}
+echo "[DASPANEL] INFO: Starting with UID $USER_ID"
 addgroup -g $USER_ID daspanel
 adduser -s /bin/false -D -h /home/daspanel -u $USER_ID -G daspanel daspanel
 
-
-# Master admin email must be informed
-if [ -z "$DASPANEL_MASTER_EMAIL" ]; then
+# Installation UUID must be informed
+if [ -z "$DASPANEL_SYS_UUID" ]; then
     echo "***"
-    echo "ERROR: You must set the env variable DASPANEL_MASTER_EMAIL to a valid email"
+    echo "ERROR: You must set the env variable DASPANEL_SYS_UUID to a valid UUID"
     echo "***"
     exit 1
 fi
 
 # unless this has already been defined, set
-if [ -z "$DASPANEL_MASTER_PASSWORD" ]; then
-    MASTER_PASSWORD=`date +%s | sha256sum | base64 | head -c 16 ; echo`
-    echo "set DASPANEL master password to random password: $MASTER_PASSWORD"
-    printf $MASTER_PASSWORD > /var/run/s6/container_environment/DASPANEL_MASTER_PASSWORD
-    export DASPANEL_MASTER_PASSWORD="$MASTER_PASSWORD"
+if [ -z "$DASPANEL_SYS_HOST" ]; then
+    export DASPANEL_SYS_HOST="daspanel.site"
+    echo "[DASPANEL] DEFAULT: DASPANEL_SYS_HOST=$DASPANEL_SYS_HOST"
 fi
 
 # unless this has already been defined, set
-if [ -z "$DASPANEL_GUUID" ]; then
-    wget -q -O- https://9jzojg54n7.execute-api.us-east-1.amazonaws.com/v1/uuid --no-check-certificate > /tmp/dasuuid
-    DASPANEL_GUUID=`cat /tmp/dasuuid | /usr/bin/jq -r '.uuid'`
-    echo "DASPANEL GUUID = $DASPANEL_GUUID"
-    printf $DASPANEL_GUUID > /var/run/s6/container_environment/DASPANEL_GUUID
-   
+if [ -z "$DASPANEL_SYS_ADMIN" ]; then
+    export DASPANEL_SYS_ADMIN="admin@$DASPANEL_SYS_HOST"
+    echo "[DASPANEL] DEFAULT: DASPANEL_SYS_ADMIN=$DASPANEL_SYS_ADMIN"
 fi
 
-if [ ! -d "/opt/daspanel/data/$DASPANEL_GUUID" ]; then
-	mkdir -p "/opt/daspanel/data/$DASPANEL_GUUID"
+# unless this has already been defined, set 
+if [ -z "$DASPANEL_SYS_PASSWORD" ]; then
+    export DASPANEL_SYS_PASSWORD=`date +%s | sha256sum | base64 | head -c 16 ; echo`
+    echo "[DASPANEL] DEFAULT: DASPANEL_SYS_PASSWORD=$DASPANEL_SYS_PASSWORD"
 fi
 
-if [ ! -d "/opt/daspanel/log/$DASPANEL_GUUID" ]; then
-	mkdir -p "/opt/daspanel/log/$DASPANEL_GUUID"
+# unless this has already been defined, set
+if [ -z "$DASPANEL_SYS_MSGHUB" ]; then
+    export DASPANEL_SYS_MSGHUB="mail-catcher"
+    echo "[DASPANEL] DEFAULT: DASPANEL_SYS_MSGHUB=$DASPANEL_SYS_MSGHUB"
 fi
+
+# unless this has already been defined, set
+if [ -z "$DASPANEL_SYS_APISERVER" ]; then
+    export DASPANEL_SYS_APISERVER="http://daspanel-api:8080/1.0"
+    echo "[DASPANEL] DEFAULT: DASPANEL_SYS_APISERVER=$DASPANEL_SYS_APISERVER"
+fi
+
+# unless this has already been defined, set
+if [ -z "$DASPANEL_SYS_DEBUG" ]; then
+    export DASPANEL_SYS_DEBUG=False
+    echo "[DASPANEL] DEFAULT: DASPANEL_SYS_DEBUG=$DASPANEL_SYS_DEBUG"
+fi
+
+if [ ! -d "/opt/daspanel/data/$DASPANEL_SYS_UUID" ]; then
+	mkdir -p "/opt/daspanel/data/$DASPANEL_SYS_UUID"
+fi
+
+if [ ! -d "/opt/daspanel/data/$DASPANEL_SYS_UUID/db" ]; then
+	mkdir -p "/opt/daspanel/data/$DASPANEL_SYS_UUID/db"
+fi
+
+if [ ! -d "/opt/daspanel/log/$DASPANEL_SYS_UUID" ]; then
+	mkdir -p "/opt/daspanel/log/$DASPANEL_SYS_UUID"
+fi
+
+# Create config if not exists
+if [ ! -f /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json ]; then
+    CFG_JSON=$(jq -n -c -M \
+        '{
+            "sys": {
+                "apiserver": env.DASPANEL_SYS_APISERVER,
+                "admin": env.DASPANEL_SYS_ADMIN,
+                "password": env.DASPANEL_SYS_PASSWORD,
+                "hostname": env.DASPANEL_SYS_HOST,
+                "msghub": env.DASPANEL_SYS_MSGHUB,
+                "debug": env.DASPANEL_SYS_DEBUG
+            },
+            "smtp": {
+                "type": "mail-catcher",
+                "server": "daspanel-mail-catcher:1025",
+                "user": env.DASPANEL_SYS_ADMIN,
+                "password": env.DASPANEL_SYS_UUID
+            }
+        }' \
+    )
+    printf $CFG_JSON > /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json
+else
+    # Update configuration
+    cfg_source=$(cat /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json)
+    echo $cfg_source | \
+    jq -cM '.sys.apiserver="'$DASPANEL_SYS_APISERVER'"' | \
+    jq -cM '.sys.admin="'$DASPANEL_SYS_ADMIN'"' | \
+    jq -cM '.sys.password="'$DASPANEL_SYS_PASSWORD'"' | \
+    jq -cM '.sys.hostname="'$DASPANEL_SYS_HOST'"' | \
+    jq -cM '.sys.msghub="'$DASPANEL_SYS_MSGHUB'"' | \
+    jq -cM '.sys.debug="'$DASPANEL_SYS_DEBUG'"' | \
+    jq -cM '.smtp.user="'$DASPANEL_SYS_ADMIN'"' | \
+    jq -cM '.smtp.password="'$DASPANEL_SYS_UUID'"' > /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json
+fi
+
+# Compatible layer with old init system, remove after all containers are using the new init/configuration system
+DASPANEL_HOST=$DASPANEL_SYS_HOST
+DASPANEL_GUUID=$DASPANEL_SYS_UUID
+DASPANEL_MASTER_EMAIL=$DASPANEL_SYS_ADMIN
+DASPANEL_MASTER_PASSWORD=$DASPANEL_SYS_PASSWORD
+DASPANEL_DEBUG=$DASPANEL_SYS_DEBUG
+
+DASPANEL_MAIL_HUB=$DASPANEL_SYS_MSGHUB
+DASPANEL_MAIL_SERVER="daspanel-mail-catcher:1025"
+DASPANEL_MAIL_USER=$DASPANEL_SYS_ADMIN
+DASPANEL_MAIL_PWD=$DASPANEL_SYS_UUID
+
+printf $DASPANEL_HOST > /var/run/s6/container_environment/DASPANEL_HOST
+printf $DASPANEL_GUUID > /var/run/s6/container_environment/DASPANEL_GUUID
+printf $DASPANEL_MASTER_EMAIL > /var/run/s6/container_environment/DASPANEL_MASTER_EMAIL
+printf $DASPANEL_MASTER_PASSWORD > /var/run/s6/container_environment/DASPANEL_MASTER_PASSWORD
+printf $DASPANEL_DEBUG > /var/run/s6/container_environment/DASPANEL_DEBUG
+
+printf $DASPANEL_MAIL_HUB > /var/run/s6/container_environment/DASPANEL_MAIL_HUB
+printf $DASPANEL_MAIL_SERVER > /var/run/s6/container_environment/DASPANEL_MAIL_SERVER
+printf $DASPANEL_MAIL_USER > /var/run/s6/container_environment/DASPANEL_MAIL_USER
+printf $DASPANEL_MAIL_PWD > /var/run/s6/container_environment/DASPANEL_MAIL_PWD
 
 # secure daspanel
 chown -R daspanel:daspanel /opt/daspanel/data
