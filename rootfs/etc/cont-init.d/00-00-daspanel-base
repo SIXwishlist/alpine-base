@@ -18,68 +18,50 @@ if [ ! -f /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json ]; then
     # unless this has already been defined, set
     if [ -z "$DASPANEL_SYS_HOST" ]; then
         export DASPANEL_SYS_HOST="daspanel.site"
-        echo "[DASPANEL] DEFAULT: DASPANEL_SYS_HOST=$DASPANEL_SYS_HOST"
     fi
 
     # unless this has already been defined, set
     if [ -z "$DASPANEL_SYS_ADMIN" ]; then
         export DASPANEL_SYS_ADMIN="admin@$DASPANEL_SYS_HOST"
-        echo "[DASPANEL] DEFAULT: DASPANEL_SYS_ADMIN=$DASPANEL_SYS_ADMIN"
     fi
 
     # unless this has already been defined, set 
     if [ -z "$DASPANEL_SYS_PASSWORD" ]; then
         export DASPANEL_SYS_PASSWORD=`date +%s | sha256sum | base64 | head -c 16 ; echo`
-        echo "[DASPANEL] DEFAULT: DASPANEL_SYS_PASSWORD=$DASPANEL_SYS_PASSWORD"
     fi
 
     # unless this has already been defined, set
     if [ -z "$DASPANEL_SYS_MSGHUB" ]; then
         export DASPANEL_SYS_MSGHUB="mail-catcher"
-        echo "[DASPANEL] DEFAULT: DASPANEL_SYS_MSGHUB=$DASPANEL_SYS_MSGHUB"
     fi
 
     # unless this has already been defined, set
     if [ -z "$DASPANEL_SYS_APISERVER" ]; then
         export DASPANEL_SYS_APISERVER="http://daspanel-api:8080/1.0"
-        echo "[DASPANEL] DEFAULT: DASPANEL_SYS_APISERVER=$DASPANEL_SYS_APISERVER"
     fi
 
     # unless this has already been defined, set
     if [ -z "$DASPANEL_SYS_DEBUG" ]; then
         export DASPANEL_SYS_DEBUG=False
-        echo "[DASPANEL] DEFAULT: DASPANEL_SYS_DEBUG=$DASPANEL_SYS_DEBUG"
     fi
 else
     if [ -z "$DASPANEL_SYS_HOST" ]; then
         export DASPANEL_SYS_HOST=`cat /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json | /usr/bin/jq -r '.sys.hostname'`
-    else
-        echo "[DASPANEL] DEFAULT: DASPANEL_SYS_HOST=$DASPANEL_SYS_HOST"
     fi
     if [ -z "$DASPANEL_SYS_ADMIN" ]; then
         export DASPANEL_SYS_ADMIN=`cat /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json | /usr/bin/jq -r '.sys.admin'`
-    else
-        echo "[DASPANEL] DEFAULT: DASPANEL_SYS_ADMIN=$DASPANEL_SYS_ADMIN"
     fi
     if [ -z "$DASPANEL_SYS_PASSWORD" ]; then
         export DASPANEL_SYS_PASSWORD=`cat /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json | /usr/bin/jq -r '.sys.password'`
-    else
-        echo "[DASPANEL] DEFAULT: DASPANEL_SYS_PASSWORD=$DASPANEL_SYS_PASSWORD"
     fi
     if [ -z "$DASPANEL_SYS_MSGHUB" ]; then
         export DASPANEL_SYS_MSGHUB=`cat /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json | /usr/bin/jq -r '.sys.msghub'`
-    else
-        echo "[DASPANEL] DEFAULT: DASPANEL_SYS_MSGHUB=$DASPANEL_SYS_MSGHUB"
     fi
     if [ -z "$DASPANEL_SYS_APISERVER" ]; then
         export DASPANEL_SYS_APISERVER=`cat /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json | /usr/bin/jq -r '.sys.apiserver'`
-    else
-        echo "[DASPANEL] DEFAULT: DASPANEL_SYS_APISERVER=$DASPANEL_SYS_APISERVER"
     fi
     if [ -z "$DASPANEL_SYS_DEBUG" ]; then
         export DASPANEL_SYS_DEBUG=`cat /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json | /usr/bin/jq -r '.sys.debug'`
-    else
-        echo "[DASPANEL] DEFAULT: DASPANEL_SYS_DEBUG=$DASPANEL_SYS_DEBUG"
     fi
 fi
 
@@ -129,27 +111,6 @@ else
     jq -cM '.smtp.user="'$DASPANEL_SYS_ADMIN'"' | \
     jq -cM '.smtp.password="'$DASPANEL_SYS_UUID'"' > /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json
 fi
-
-# Compatible layer with old init system, remove after all containers are using the new init/configuration system
-#DASPANEL_HOST=$DASPANEL_SYS_HOST
-#DASPANEL_GUUID=$DASPANEL_SYS_UUID
-#DASPANEL_MASTER_EMAIL=$DASPANEL_SYS_ADMIN
-#DASPANEL_MASTER_PASSWORD=$DASPANEL_SYS_PASSWORD
-#DASPANEL_DEBUG=$DASPANEL_SYS_DEBUG
-#DASPANEL_MAIL_HUB=$DASPANEL_SYS_MSGHUB
-#DASPANEL_MAIL_SERVER="daspanel-mail-catcher:1025"
-#DASPANEL_MAIL_USER=$DASPANEL_SYS_ADMIN
-#DASPANEL_MAIL_PWD=$DASPANEL_SYS_UUID
-
-#echo "$DASPANEL_HOST" > /var/run/s6/container_environment/DASPANEL_HOST
-#echo "$DASPANEL_GUUID" > /var/run/s6/container_environment/DASPANEL_GUUID
-#echo "$DASPANEL_MASTER_EMAIL" > /var/run/s6/container_environment/DASPANEL_MASTER_EMAIL
-#echo "$DASPANEL_MASTER_PASSWORD" > /var/run/s6/container_environment/DASPANEL_MASTER_PASSWORD
-#echo "$DASPANEL_DEBUG" > /var/run/s6/container_environment/DASPANEL_DEBUG
-#echo "$DASPANEL_MAIL_HUB" > /var/run/s6/container_environment/DASPANEL_MAIL_HUB
-#echo "$DASPANEL_MAIL_SERVER" > /var/run/s6/container_environment/DASPANEL_MAIL_SERVER
-#echo "$DASPANEL_MAIL_USER" > /var/run/s6/container_environment/DASPANEL_MAIL_USER
-#echo "$DASPANEL_MAIL_PWD" > /var/run/s6/container_environment/DASPANEL_MAIL_PWD
 
 # secure daspanel
 chown -R daspanel:daspanel /opt/daspanel/data
