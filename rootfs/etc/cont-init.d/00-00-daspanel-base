@@ -13,6 +13,14 @@ if [ -z "$DASPANEL_SYS_UUID" ]; then
     exit 1
 fi
 
+jq '.' /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json > /dev/null
+if [ ! $? -eq 0 ];then
+        rm -f /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json > /dev/null
+fi
+if [ ! -s /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json ]; then
+    rm -f /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json > /dev/null
+fi
+
 if [ ! -f /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json ]; then
 
     # unless this has already been defined, set
