@@ -267,9 +267,11 @@ Released by Abner G Jacobsen, Sun 28 Aug 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### 0.2.10
+### 0.2.11
 __Changes__
 
+- bumped to version 0.2.11
+- See changes in CHANGELOG.md
 - bumped to version 0.2.10
 - Added settings for REDIS server when sysconfig.json is created. Also added to the rootfs the program redis-exec to be used as pubsub client by the containers that need this type of service.
 - Fixed a bug when for some reason the sysconfig.json file was empty.
@@ -420,7 +422,7 @@ __Contributors__
 - admindaspanel
 
 Released by Abner G Jacobsen, Wed 26 Apr 2017 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.10#diff)
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.11#diff)
 ______________
 
 ### alpine-base-0.1.7
