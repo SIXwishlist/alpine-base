@@ -267,9 +267,11 @@ Released by Abner G Jacobsen, Sun 28 Aug 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### 0.2.11
+### 0.2.12
 __Changes__
 
+- bumped to version 0.2.12
+- See changes in CHANGELOG.md
 - bumped to version 0.2.11
 - See changes in CHANGELOG.md
 - bumped to version 0.2.10
@@ -422,7 +424,7 @@ __Contributors__
 - admindaspanel
 
 Released by Abner G Jacobsen, Wed 26 Apr 2017 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.11#diff)
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.12#diff)
 ______________
 
 ### alpine-base-0.1.7
