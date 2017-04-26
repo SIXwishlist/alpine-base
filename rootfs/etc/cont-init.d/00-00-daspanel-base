@@ -102,6 +102,13 @@ if [ ! -f /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json ]; then
                 "server": "daspanel-mail-catcher:1025",
                 "user": env.DASPANEL_SYS_ADMIN,
                 "password": env.DASPANEL_SYS_UUID
+            },
+            "redis": {
+                "server": "daspanel-redis",
+                "port": 6379,
+                "database": 0,
+                "user": "",
+                "password": env.DASPANEL_SYS_UUID
             }
         }' \
     )
