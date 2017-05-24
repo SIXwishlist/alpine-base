@@ -13,6 +13,39 @@ if [ -z "$DASPANEL_SYS_UUID" ]; then
     exit 1
 fi
 
+# API server 
+if [ -z "$DASPANEL_SYS_APISERVER" ]; then
+    export DASPANEL_SYS_APISERVER="http://daspanel-api:8080/1.0"
+    printf $DASPANEL_SYS_APISERVER > /var/run/s6/container_environment/DASPANEL_SYS_APISERVER
+fi
+
+# API key 
+if [ -z "$DASPANEL_SYS_APIKEY" ]; then
+    export DASPANEL_SYS_APIKEY="$DASPANEL_SYS_UUID"
+    printf $DASPANEL_SYS_APIKEY > /var/run/s6/container_environment/DASPANEL_SYS_APIKEY
+fi
+
+# If container need to wait API become online 
+if [ -z "$DASPANEL_WAIT_FOR_API" ]; then
+    export DASPANEL_WAIT_FOR_API="YES"
+    printf $DASPANEL_WAIT_FOR_API > /var/run/s6/container_environment/DASPANEL_WAIT_FOR_API
+fi
+
+if [ ! -d "/opt/daspanel/data" ]; then
+	mkdir -p "/opt/daspanel/data"
+fi
+if [ ! -d "/opt/daspanel/log" ]; then
+	mkdir -p "/opt/daspanel/log"
+fi
+
+# secure daspanel
+chown -R daspanel:daspanel /opt/daspanel/data
+chown -R daspanel:daspanel /opt/daspanel/log
+
+exit 0
+
+#wget -O out2.txt --header="Authorization: $DASPANEL_SYS_APIKEY" $DASPANEL_SYS_APISERVER/tenants/$DASPANEL_SYS_UUID
+
 jq '.' /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json > /dev/null
 if [ ! $? -eq 0 ];then
         rm -f /opt/daspanel/data/$DASPANEL_SYS_UUID/db/sysconfig.json > /dev/null
