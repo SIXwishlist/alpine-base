@@ -16,7 +16,10 @@ ENV \
     TZ="UTC" \
 
     # S6 overlay version
-    S6_OVERLAY_VERSION=v1.19.1.1
+    S6_OVERLAY_VERSION=v1.19.1.1 \
+
+    # DASPANEL defaults
+    DASPANEL_WAIT_FOR_API="YES"
 
 # A little bit of metadata management.
 # See http://label-schema.org/  
@@ -47,7 +50,7 @@ RUN set -x \
     && rm -f /tmp/s6-overlay.tar.gz \
 
     # Install gomplate
-    && wget https://github.com/hairyhenderson/gomplate/releases/download/v1.5.0/gomplate_linux-amd64-slim -O /usr/bin/gomplate \
+    && wget https://github.com/hairyhenderson/gomplate/releases/download/v1.6.0/gomplate_linux-amd64-slim -O /usr/bin/gomplate \
     && chmod 755 /usr/bin/gomplate \
 
     # Clean image space
