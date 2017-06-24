@@ -62,7 +62,7 @@ ______________
 __Changes__
 
 
-Released by N/A, Wed 26 Apr 2017 -
+Released by N/A, Sat 24 Jun 2017 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
@@ -267,16 +267,55 @@ Released by Abner G Jacobsen, Sun 28 Aug 2016 -
 [see the diff](https://github.com/admindaspanel/alpine-base/compare/...#diff)
 ______________
 
-### 0.2.12
+### 0.3.0
 __Changes__
 
+- bumped to version 0.3.0
+- Changed version nubering system
+- Code cleanup.
+- Upgraded Gomplate version.
+- Merge pull request #27 from daspanel/dev
+  
+  New initialization system
+- Merge pull request #26 from abnerjacobsen/update-gomplate
+  
+  Modified container initialization to get system settings using an API
+- Modified container initialization to get system settings using an API call.
+- Merge pull request #25 from daspanel/dev
+  
+  Merges from dev branch
+- Merge pull request #24 from daspanel/dmz
+  
+  Merge dmz branch
+- Merge pull request #23 from abnerjacobsen/sysconfig-add-redisconf
+  
+  Changed sysconfig.json format and other changes
+- See changes in CHANGELOG.md
 - bumped to version 0.2.12
 - See changes in CHANGELOG.md
 - bumped to version 0.2.11
 - See changes in CHANGELOG.md
 - bumped to version 0.2.10
 - Added settings for REDIS server when sysconfig.json is created. Also added to the rootfs the program redis-exec to be used as pubsub client by the containers that need this type of service.
+- Merge pull request #22 from daspanel/dev
+  
+  Fixed a bug when for some reason the sysconfig.json file was empty.
+- Merge pull request #21 from daspanel/dmz
+  
+  Fixed a bug when for some reason the sysconfig.json file was empty
+- Merge pull request #20 from abnerjacobsen/remove-sensitive-info
+  
+  Fixed a bug when for some reason the sysconfig.json file was empty.
 - Fixed a bug when for some reason the sysconfig.json file was empty.
+- Merge pull request #19 from daspanel/dev
+  
+  Merge branch dev
+- Merge pull request #18 from daspanel/dmz
+  
+  Merge from dmz branch
+- Merge pull request #17 from abnerjacobsen/remove-sensitive-info
+  
+  Remove sensitive info
 - Removed sensitive information from logs
 - Merge pull request #16 from daspanel/dev
   
@@ -423,8 +462,8 @@ __Contributors__
 - Abner G Jacobsen
 - admindaspanel
 
-Released by Abner G Jacobsen, Wed 26 Apr 2017 -
-[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.2.12#diff)
+Released by Abner G Jacobsen, Sat 24 Jun 2017 -
+[see the diff](https://github.com/admindaspanel/alpine-base/compare/e794b6646b6fd8f677c0a36af19d72e14f6311cc...0.3.0#diff)
 ______________
 
 ### alpine-base-0.1.7
